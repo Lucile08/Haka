@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    
+    <title>Document</title>
+</head>
+<body>
+    <%- include('navbar') %>
+
+    <div class="home container-fluid">
+        <div class="col-12 col-lg-6">
+            <h5 class="titletable">Tickets available on 02/08:</h5>
+            <ul class="list-group">
+                <% for(var i=0; i<trip.length; i++) {
+                    %>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                    <span class="test badge text-dark"><h6><%=trip[i].departure%>/<%=trip[i].arrival%></h6></span>
+                    <span class="test badge text-dark">Train Departure at: <%=trip[i].departureTime%></span>
+                    <span class="badge text-dark"><h5><%=trip[i].price%>€</h5></span>
+                    <a href="./add-tickets?id=<%=trip[i].id%>"><button type="button" class="btn btn-danger">
+                        OK <span class="badge bg-warning"></span>
+                      </button></a>
+                  </div>
+                </li>
+            <%}%>
+                
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

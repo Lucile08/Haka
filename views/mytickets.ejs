@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('navbar') %>
+
+    <div class="home container-fluid">
+        <div class="col-12 col-lg-12" id="tableauticket">
+            <div class="row">
+                <div class="col-12 col-lg-12" >
+                <h5>My tickets</h5>
+             <table class="table table-light">
+                <thead>
+                  <tr>
+                    <th scope="col">N</th>
+                    <th scope="col">Journey</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Departure Time</th>
+                    <th scope="col">Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i<trips.length; i++){%>
+
+                   
+                  <tr>
+                    <th scope="row">1</th>
+                    <td><%=trips[i].departure%>/<%=trips[i].arrival%></td>
+                    <td><%=dateFormat(trips[i].date)%></td>
+                    <td><%=trips[i].departureTime%> pm</td>
+                    <td><%=trips[i].price%>€</td>
+                  </tr>
+                
+
+
+                  <tr class="table-danger">
+                    <th scope="row">Total</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><%=trips[i].price%>€</td>
+                  </tr>
+                 
+                </tbody>
+    
+              </table>
+
+              
+              <!-- Trigger the modal with a button -->
+           <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Confirm</button>
+
+         <!-- Modal -->
+
+           <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+             <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+               <div class="modal-header">
+                <h5 class="modal-title">Thank you!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+               <div class="modal-body">
+                <p>Votre billet au départ de <%=trips[i].departure%> arrivera le <%=dateFormat(trips[i].date)%> à <%=trips[i].departureTime%> pm à la gare de <%=trips[i].arrival%>. Bon Voyage !</p>
+             </div>
+           <div class="modal-footer">
+              <a href="/homepage"><button type="button" class="btn btn-danger" data-bs-dismiss="modal">Home</button></a>
+            </div>
+           </div>
+         </div>
+      </div>
+    <% }%> 
+
+
+       </div>
+
+        </div>
+    </div>
+
+              <div class="input-group-append">
+              <button type="button" type="submit" class="btn btn-danger">Confirm</button>
+          </div>
+        </div>
+    </div>
+  </div>
+                 
+    
+                
+                 
+
+     
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
